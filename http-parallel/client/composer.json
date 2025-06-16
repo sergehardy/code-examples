@@ -1,0 +1,25 @@
+{
+  "name": "sergehardy/http-parallel",
+  "description": "description",
+  "minimum-stability": "stable",
+  "license": "MIT",
+  "require": {
+    "php": "^8.0",
+    "symfony/http-client": "*",
+    "symfony/http-client-contracts": "*",
+    "symfony/framework-bundle": "*",
+    "symfony/yaml": "*",
+    "symfony/dotenv": "*",
+    "symfony/runtime": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "src/"
+    }
+  },
+  "config": {
+    "allow-plugins": {
+      "symfony/runtime": true
+    }
+  }
+}

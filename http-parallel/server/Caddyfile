@@ -1,0 +1,15 @@
+{
+	frankenphp {
+		worker {
+            file /app/public/index.php
+    		watch /app/src
+		}
+    }
+	auto_https off
+}
+
+:8080 {
+	root * public/
+	php_server
+}
+
