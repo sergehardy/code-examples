@@ -4,22 +4,21 @@ require __DIR__ . '/vendor/autoload.php';
 use App\RequestBuilder;
 
 $baseUrl = $_SERVER['BASE_URL'];
-$batchSize = (int)$_SERVER['BATCH_SIZE'];
 
 try {
-    $requests = new RequestBuilder()->build($baseUrl, $batchSize);
+    $batchSize = null;
+    $requests = new RequestBuilder()->build($baseUrl);
     $nbOfRequests = 0;
     $timeStart = microtime(true);
     foreach ($requests as $content) {
         $nbOfRequests++;
-        echo "Response from API root: " . $content . PHP_EOL;
-        echo "-------------------------------------------" . PHP_EOL;
+        error_log(sprintf("Response from API root: %s", $content));
     }
 } catch (\Exception $e) {
-//    echo "Error: " . $e->getMessage() . PHP_EOL;
+    error_log(sprintf("Error: %s", $e->getMessage()));
 }
 $time = floor(1000 * (microtime(true) - $timeStart));
-echo "batch size $batchSize" . PHP_EOL;
-echo "nombre de requêtes $nbOfRequests" . PHP_EOL;
-echo "temps d'exécution des requêtes: $time ms" . PHP_EOL;
+error_log(sprintf("batch size %d", $batchSize));
+error_log(sprintf("number of requests %d", $nbOfRequests));
+error_log(sprintf("total execution time: %d ms", $time));
 
